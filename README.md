@@ -20,9 +20,13 @@ Proyecto de aplicación móvil de comercio electrónico desarrollado con **Flutt
 
 ## 📸 Capturas de Pantalla
 
-![Carrito de compras](assets/screenshots/carrito.png)
-![Detalle del producto](assets/screenshots/detalle.png)
-![Pantalla de productos](assets/screenshots/productos.png)
+<table>
+  <tr>
+    <td><img src="assets/screenshots/productos.png" width="200"></td>
+    <td><img src="assets/screenshots/detalle.png" width="200"></td>
+    <td><img src="assets/screenshots/carrito.png" width="200"></td>
+  </tr>
+</table>
 
 ## ⚙️ Configuración del Entorno
 
