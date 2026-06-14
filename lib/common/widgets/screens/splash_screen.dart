@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         child: SafeArea(
           child: Stack(
             children: [
-              // Contenido Central: Identidad de Bazar Go
+              // Contenido Central
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +116,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                         child: Column(
                           children: [
                             Text(
-                              'BAZAR GO',
+                              'TIENDA APP',
                               style: AppTextStyles.textTitleStyle.copyWith(
                                 letterSpacing: 4,
                                 fontSize: 34,
