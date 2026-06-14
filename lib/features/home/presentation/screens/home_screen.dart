@@ -75,10 +75,12 @@ class HomeScreen extends ConsumerWidget {
       ),
       actions: [
         // Botón de Carga (Solo para desarrollo)
+        /*
         IconButton(
           icon: const Icon(Icons.cloud_upload_outlined, color: AppColors.primaryColor),
           onPressed: () => _seedDatabase(context),
         ),
+        */
         // Logout
         IconButton(
           icon: const Icon(Icons.logout, color: Colors.redAccent),
