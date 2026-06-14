@@ -68,9 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 8,),
 
-                // 🏷️ NUEVO NOMBRE DE LA APP: BAZAR GO
+                
                 Text(
-                  'BAZAR GO',
+                  'TIENDA APP',
                   style: AppTextStyles.textTitleStyle.copyWith(
                     letterSpacing: 3,
                     fontSize: 28,
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 PrimaryTextField(
                   hintText: 'Ingresa tu contraseña',
-                  labelText: 'Contraseña', // ✨ Corregido: 'Contraeña'
+                  labelText: 'Contraseña',
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   controller: passwordController,
