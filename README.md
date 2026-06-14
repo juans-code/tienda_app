@@ -30,4 +30,4 @@ Para ejecutar este proyecto, asegúrate de tener instalado [Flutter](https://flu
 
 1. Clona el repositorio:
    ```bash
-   git clone [TU_LINK_DE_REPOSITORIO]
+   git clone https://github.com/juans-code/tienda_app.git

@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tienda_app/features/products/domain/models/category_model.dart';
 import 'package:tienda_app/features/products/domain/models/product_model.dart';
 import 'package:tienda_app/features/products/presentation/providers/products_providers.dart';
-import 'package:tienda_app/features/products/presentation/widgets/product_card.dart';
 import 'package:tienda_app/styles/app_colors.dart';
 import 'package:tienda_app/styles/text_styles.dart';
 
