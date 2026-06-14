@@ -18,13 +18,18 @@ Proyecto de aplicación móvil de comercio electrónico desarrollado con **Flutt
 * **Backend / DB:** Firebase (Firestore & Storage)
 * **Diseño:** UI personalizada con colores definidos y componentes reutilizables.
 
-## 📸 Capturas de Pantalla
+### Capturas de pantalla de la App
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/productos.png" width="200"></td>
-    <td><img src="assets/screenshots/detalle.png" width="200"></td>
-    <td><img src="assets/screenshots/carrito.png" width="200"></td>
+    <th align="center">Lista de Productos</th>
+    <th align="center">Detalle del Producto</th>
+    <th align="center">Carrito de Compras</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/screenshots/productos.png" width="200"></td>
+    <td align="center"><img src="assets/screenshots/detalle.png" width="200"></td>
+    <td align="center"><img src="assets/screenshots/carrito.png" width="200"></td>
   </tr>
 </table>
 
