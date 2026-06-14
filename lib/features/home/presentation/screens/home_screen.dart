@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tienda_app/common/utils/firebase_seeder.dart';
 import 'package:tienda_app/features/cart/presentation/screens/cart_screen.dart';
 import 'package:tienda_app/features/home/presentation/providers/home_providers.dart';
 import 'package:tienda_app/features/home/presentation/widgets/bottom_navigator_bar.dart';
@@ -88,18 +87,6 @@ class HomeScreen extends ConsumerWidget {
         ),
       ],
     );
-  }
-
-  Future<void> _seedDatabase(BuildContext context) async {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Subiendo productos...')),
-    );
-    await FirebaseSeeder.seedBazarDatabase();
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('🎉 ¡Catálogo actualizado!')),
-      );
-    }
   }
 
   void _showLogoutDialog(BuildContext context) {

@@ -13,19 +13,14 @@ class ProductsRepositoryImpl implements ProductsRepository {
   @override
   Future<List<CategoryModel>> getCategories() async {
     try {
-      print('🔄 Cargando categorías desde Firestore...');
+
       final snapshot = await _firestore.collection('categories').get();
-      print('✅ Categorías encontradas: ${snapshot.docs.length}');
-      
       final categories = snapshot.docs.map((doc) {
-        final data = doc.data();
-        print('  📁 ${doc.id}: ${data['name']}');
         return CategoryModel.fromFirestore(doc);
       }).toList();
       
       return categories;
     } catch (e) {
-      print('❌ Error al cargar categorías: $e');
       throw Exception('Error al cargar categorías: $e');
     }
   }
@@ -47,19 +42,14 @@ class ProductsRepositoryImpl implements ProductsRepository {
   @override
   Future<List<ProductModel>> getProducts() async {
     try {
-      print('🔄 Cargando productos desde Firestore...');
       final snapshot = await _firestore.collection('products').get();
-      print('✅ Productos encontrados: ${snapshot.docs.length}');
-      
+  
       final products = snapshot.docs.map((doc) {
-        final data = doc.data();
-        print('  📦 ${doc.id}: ${data['name']} - S/ ${data['price']} - Categoría: ${data['category_id']}');
         return ProductModel.fromFirestore(doc);
       }).toList();
       
       return products;
     } catch (e) {
-      print('❌ Error al cargar productos: $e');
       throw Exception('Error al cargar productos: $e');
     }
   }
@@ -80,16 +70,13 @@ class ProductsRepositoryImpl implements ProductsRepository {
   @override
   Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
     try {
-      print('🔄 Cargando productos para categoría: $categoryId');
       final snapshot = await _firestore
           .collection('products')
           .where('category_id', isEqualTo: categoryId)
           .get();
-      print('✅ Productos encontrados para categoría $categoryId: ${snapshot.docs.length}');
       
       return snapshot.docs.map((doc) => ProductModel.fromFirestore(doc)).toList();
     } catch (e) {
-      print('❌ Error al cargar productos por categoría: $e');
       throw Exception('Error al cargar productos por categoría: $e');
     }
   }
