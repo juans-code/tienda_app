@@ -6,7 +6,6 @@ import 'package:tienda_app/features/products/domain/models/category_model.dart';
 import 'package:tienda_app/features/products/domain/models/product_model.dart';
 import 'package:tienda_app/features/products/domain/repositories/products_repository.dart';
 
-// ==================== PROVIDERS BASE ====================
 
 final firebaseFirestoreProvider = Provider<FirebaseFirestore>(
   (ref) => FirebaseFirestore.instance,
@@ -15,8 +14,6 @@ final firebaseFirestoreProvider = Provider<FirebaseFirestore>(
 final productsRepositoryProvider = Provider<ProductsRepository>(
   (ref) => ProductsRepositoryImpl(firestore: ref.watch(firebaseFirestoreProvider)),
 );
-
-// ==================== PRODUCTOS ====================
 
 final productsProvider = FutureProvider<List<ProductModel>>((ref) async {
   ref.keepAlive(); 
@@ -29,14 +26,10 @@ final productByIdProvider = FutureProvider.family<ProductModel?, String>((ref, p
   return repository.getProductById(productId);
 });
 
-// ==================== CATEGORÍAS ====================
-
 final categoriesProvider = FutureProvider<List<CategoryModel>>((ref) async {
   final repository = ref.watch(productsRepositoryProvider);
   return repository.getCategories();
 });
-
-// ==================== BÚSQUEDA Y FILTRADO ====================
 
 final searchQueryProvider = StateProvider<String>((ref) => '');
 final selectedCategoryProvider = StateProvider<String>((ref) => '');
@@ -58,7 +51,6 @@ final filteredProductsProvider = Provider<List<ProductModel>>((ref) {
   }).toList();
 });
 
-// ==================== CARRITO DE COMPRAS ====================
 
 class CartItemModel {
   final String id;
@@ -127,7 +119,7 @@ class CartNotifier extends StateNotifier<CartState> {
     );
   }
 
-  // MÉTODO AGREGADO PARA SOLUCIONAR EL ERROR
+
   void clearCart() {
     state = const CartState(items: []);
   }
@@ -135,6 +127,5 @@ class CartNotifier extends StateNotifier<CartState> {
 
 final cartProvider = StateNotifierProvider<CartNotifier, CartState>((ref) => CartNotifier());
 
-// ==================== UTILIDADES ====================
 
 final formattedPriceProvider = Provider.family<String, double>((ref, price) => 'S/ ${price.toStringAsFixed(2)}');

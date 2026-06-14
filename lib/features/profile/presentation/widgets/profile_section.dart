@@ -5,10 +5,6 @@ import 'package:tienda_app/features/auth/presentation/providers/auth_provider.da
 import 'package:tienda_app/styles/app_colors.dart';
 import 'package:tienda_app/styles/text_styles.dart';
 
-// 🔄 Nos conectamos a tu StreamProvider oficial de Firebase
-// (Asegúrate de que 'authStateProvider' esté accesible, ya sea importándolo o dejándolo en tu archivo de providers)
-// import 'package:tienda_app/features/auth/providers/auth_provider.dart';
-
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
@@ -23,30 +19,25 @@ class ProfileSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 📡 Escuchamos el estado de autenticación real de Firebase
     final authState = ref.watch(authStateProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor, // Fondo Beige Claro Orgánico
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: authState.when(
-          // 🟢 CASO 1: Sesión activa y datos mapeados
           data: (user) {
             if (user == null) {
               return _buildNoUserFallback();
             }
             return _buildProfileContent(user);
           },
-          // 🔴 CASO 2: Error de conexión con Firebase
           error: (error, stack) => _buildErrorFallback(error.toString()),
-          // 🟡 CASO 3: Esperando el delay de 3 segundos del StreamProvider
           loading: () => _buildLoadingState(),
         ),
       ),
     );
   }
 
-  // 📝 CONSTRUCCIÓN DEL CONTENIDO CUANDO EL USUARIO EXISTE
   Widget _buildProfileContent(User user) {
     final String displayName = user.displayName ?? 'Comprador';
     final String displayEmail = user.email ?? 'Sin correo registrado';
@@ -57,11 +48,9 @@ class ProfileSection extends ConsumerWidget {
         children: [
           const SizedBox(height: 24),
           
-          // 👤 CABECERA CON AVATAR COMPACTO Y MINIMALISTA
           _buildHeaderSection(displayName, displayEmail),
           const SizedBox(height: 32),
 
-          // 📦 SECCIÓN 1: MI ACTIVIDAD (Estilo tarjetas de ProductSection)
           _buildSectionTitle('Mi Actividad'),
           _buildMenuContainer([
             _buildMenuRow(
@@ -88,7 +77,6 @@ class ProfileSection extends ConsumerWidget {
 
           const SizedBox(height: 24),
 
-          // ⚙️ SECCIÓN 2: AJUSTES Y PREFERENCIAS
           _buildSectionTitle('Preferencias'),
           _buildMenuContainer([
             _buildMenuRow(
@@ -106,16 +94,13 @@ class ProfileSection extends ConsumerWidget {
             ),
           ]),
           
-          // Espacio final limpio sin el botón duplicado de Cerrar Sesión
           const SizedBox(height: 40),
         ],
       ),
     );
   }
 
-  // 👤 COMPONENTE HEADER REDISEÑADO: Avatar compacto y tipografía balanceada
   Widget _buildHeaderSection(String name, String email) {
-    // Tomamos exclusivamente la primera letra para un look Premium/Limpio
     final String singleInitial = name.isNotEmpty ? name.substring(0, 1).toUpperCase() : 'U';
 
     return Padding(
@@ -130,15 +115,15 @@ class ProfileSection extends ConsumerWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0x06000000), // Sombra muy sutil
+                  color: Color(0x06000000),
                   blurRadius: 8,
                   offset: Offset(0, 3),
                 )
               ],
             ),
             child: CircleAvatar(
-              radius: 22, // Reducido de 38 a 22 para máxima finura
-              backgroundColor: AppColors.primaryColor.withOpacity(0.08), // Acento azul ligero
+              radius: 22,
+              backgroundColor: AppColors.primaryColor.withOpacity(0.08),
               child: Text(
                 singleInitial,
                 style: const TextStyle(
@@ -151,7 +136,7 @@ class ProfileSection extends ConsumerWidget {
           ),
           const SizedBox(width: 16),
           
-          // Textos informativos de Cuenta
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,7 +147,7 @@ class ProfileSection extends ConsumerWidget {
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.titleMedium.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: AppColors.secondaryColor, // Marrón oscuro corporativo
+                    color: AppColors.secondaryColor,
                     fontSize: 16,
                   ),
                 ),
@@ -172,7 +157,7 @@ class ProfileSection extends ConsumerWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    color: AppColors.textSecondary, // Gris secundario de tu paleta
+                    color: AppColors.textSecondary,
                     fontSize: 13,
                   ),
                 ),
@@ -180,7 +165,6 @@ class ProfileSection extends ConsumerWidget {
             ),
           ),
           
-          // Pequeño botón estilizado para editar perfil
           IconButton(
             onPressed: () {},
             style: IconButton.styleFrom(
@@ -199,7 +183,7 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 🏷️ COMPONENTE TÍTULO DE SECCIÓN
+
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(28, 0, 24, 10),
@@ -210,7 +194,7 @@ class ProfileSection extends ConsumerWidget {
           style: const TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w800,
-            color: AppColors.neutralColor, // Tu gris claro
+            color: AppColors.neutralColor,
             letterSpacing: 1.2,
           ),
         ),
@@ -218,7 +202,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 📦 CONTENEDOR TIPO TARJETA AGRUPADORA
   Widget _buildMenuContainer(List<Widget> children) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
@@ -238,7 +221,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 🔲 COMPONENTE FILA DE MENÚ
   Widget _buildMenuRow({
     required IconData icon,
     required String title,
@@ -255,7 +237,7 @@ class ProfileSection extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.surfaceColor, // Gris de superficie suave
+                color: AppColors.surfaceColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, size: 20, color: AppColors.secondaryColor),
@@ -297,7 +279,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 🧵 COMPONENTE SEPARADOR INTERNO
   Widget _buildDivider() {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -305,7 +286,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 🟡 COMPONENTE LOADING (Activo durante la simulación de los 3 segundos)
   Widget _buildLoadingState() {
     return Center(
       child: Column(
@@ -315,7 +295,7 @@ class ProfileSection extends ConsumerWidget {
             width: 26,
             height: 26,
             child: CircularProgressIndicator(
-              color: AppColors.primaryColor, // Tu azul de acento
+              color: AppColors.primaryColor,
               strokeWidth: 2.5,
             ),
           ),
@@ -333,7 +313,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 🔴 COMPONENTE CAÍDA DE ERROR
   Widget _buildErrorFallback(String error) {
     return Center(
       child: Padding(
@@ -347,7 +326,6 @@ class ProfileSection extends ConsumerWidget {
     );
   }
 
-  // 📭 COMPONENTE CAÍDA SIN SESIÓN
   Widget _buildNoUserFallback() {
     return const Center(
       child: Text(

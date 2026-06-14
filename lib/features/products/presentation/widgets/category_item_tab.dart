@@ -1,4 +1,3 @@
-// features/products/presentation/widgets/category_item_tab.dart
 import 'package:flutter/material.dart';
 import 'package:tienda_app/features/products/domain/models/category_model.dart';
 import 'package:tienda_app/styles/app_colors.dart';
@@ -70,7 +69,6 @@ class CategoryItemTab extends StatelessWidget {
                         ),
                 ),
                 
-                // ✅ Nombre de la categoría - CON COLORES CORREGIDOS
                 Expanded(
                   child: Text(
                     category.name,
@@ -78,8 +76,8 @@ class CategoryItemTab extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                       color: isSelected 
-                          ? Colors.white  // ✅ Cuando está seleccionado: texto blanco
-                          : Colors.white, // ✅ Cuando NO está seleccionado: también blanco
+                          ? Colors.white
+                          : Colors.white,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

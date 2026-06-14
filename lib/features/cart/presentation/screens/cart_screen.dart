@@ -96,7 +96,6 @@ class CartScreen extends ConsumerWidget {
     );
   }
 
-  // Ahora recibe ref como argumento
   Widget _buildCheckoutBar(
     BuildContext context,
     WidgetRef ref,

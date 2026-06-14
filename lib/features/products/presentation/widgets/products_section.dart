@@ -120,7 +120,6 @@ class _ProductsSectionState extends ConsumerState<ProductsSection> {
         final hasActiveFilters = ref.watch(searchQueryProvider).trim().isNotEmpty ||
             ref.watch(selectedCategoryProvider).trim().isNotEmpty;
 
-        // ESTADO VACÍO CON REFRESH INDICATOR
         if (filteredProducts.isEmpty) {
           return RefreshIndicator(
             onRefresh: _handleRefresh,
@@ -157,7 +156,6 @@ class _ProductsSectionState extends ConsumerState<ProductsSection> {
           );
         }
 
-        // ESTADO CON DATOS CON REFRESH INDICATOR
         return RefreshIndicator(
           onRefresh: _handleRefresh,
           child: CustomScrollView(

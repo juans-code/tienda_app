@@ -10,8 +10,6 @@ class ProductsRepositoryImpl implements ProductsRepository {
   ProductsRepositoryImpl({required FirebaseFirestore firestore}) 
       : _firestore = firestore;
   
-  // ==================== CATEGORÍAS ====================
-  
   @override
   Future<List<CategoryModel>> getCategories() async {
     try {
@@ -45,7 +43,6 @@ class ProductsRepositoryImpl implements ProductsRepository {
     }
   }
   
-  // ==================== PRODUCTOS ====================
   
   @override
   Future<List<ProductModel>> getProducts() async {

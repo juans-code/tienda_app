@@ -74,7 +74,7 @@ class HomeScreen extends ConsumerWidget {
         ],
       ),
       actions: [
-        // Botón de Carga (Solo para desarrollo)
+        // Botón de Carga de categorias y productos (Solo para desarrollo)
         /*
         IconButton(
           icon: const Icon(Icons.cloud_upload_outlined, color: AppColors.primaryColor),

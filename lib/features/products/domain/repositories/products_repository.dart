@@ -1,4 +1,3 @@
-// domain/repositories/products_repository.dart
 import 'package:tienda_app/features/products/domain/models/category_model.dart';
 import 'package:tienda_app/features/products/domain/models/product_model.dart';
 

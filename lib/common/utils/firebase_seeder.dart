@@ -243,7 +243,7 @@ class FirebaseSeeder {
         await _firestore.collection('products').doc(prodId).set(productData);
       }
       
-      print('🎉 ¡Todo listo! Tu Bazar ahora cuenta con un catálogo robusto de 24 productos distribuidos equitativamente.');
+      print('🎉 ¡Todo listo! el Bazar ahora cuenta con un catálogo robusto de 24 productos distribuidos equitativamente.');
     } catch (e) {
       print('❌ Error crítico en el Seeder Expandido: $e');
     }

@@ -24,7 +24,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
-    // Buena práctica: liberar los controladores de la memoria al destruir la pantalla
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
@@ -40,7 +39,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
-        // 1. Envolvemos con un SingleChildScrollView usando el truco de VS Code
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -67,14 +65,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 PrimaryTextField(
                   hintText: 'Ingresa tu contraseña',
-                  labelText: 'Contraseña', // Corregido typo "Contraeña"
+                  labelText: 'Contraseña', 
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   controller: passwordController,
                 ),
                 PrimaryTextField(
                   hintText: 'Confirma tu contraseña',
-                  labelText: 'Confirmar Contraseña', // Corregido typo "Contraeña"
+                  labelText: 'Confirmar Contraseña',
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   controller: confirmPasswordController,
@@ -103,7 +101,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   text: 'REGISTRAR',
                 ),
                 
-                // 2. Reemplazamos 'Spacer()' por una separación fija para evitar el error de RenderFlex
                 const SizedBox(height: 40,),
                 
                 Text(
@@ -112,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context); // Regresa al LoginScreen de forma limpia
+                    Navigator.pop(context);
                   },
                   child: Text(
                     'INGRESAR',
@@ -137,12 +134,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         password: passwordController.text,
       );
       
-      // 3. MEJORA DE NAVEGACIÓN: Limpiamos la pila de pantallas para ir directamente al Home
       if (mounted) {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
-          (route) => false, // Elimina el registro y el login de la pila
+          (route) => false,
         );
       }
     } on FirebaseAuthException catch (e) {

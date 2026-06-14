@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// Quité SvgPicture y ImageAssets si decides usar el Icon, pero puedes reincorporarlos si tienes el SVG de Bazar Go.
 import 'package:tienda_app/common/widgets/buttons/primary_button.dart';
 import 'package:tienda_app/common/widgets/screens/loading_screen.dart';
 import 'package:tienda_app/common/widgets/text_fields/primary_text_field.dart';
@@ -131,10 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text);
-      
-      // ✨ NOTA: Quitamos el Navigator.push manual hacia HomeScreen.
-      // Como tu main.dart escucha de forma reactiva al authStateProvider de Riverpod,
-      // en cuanto FirebaseAuth detecte el usuario, la UI cambiará sola a la HomeScreen.
       
     } on FirebaseAuthException catch(e) {
       SnackBar snackBar = SnackBar(content: Text(e.message ?? 'Error al ingresar'));

@@ -1,4 +1,3 @@
-// features/cart/presentation/widgets/cart_item_card.dart
 import 'package:flutter/material.dart';
 import 'package:tienda_app/features/products/presentation/providers/products_providers.dart';
 

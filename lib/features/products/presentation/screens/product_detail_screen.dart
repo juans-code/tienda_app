@@ -1,4 +1,3 @@
-// features/products/presentation/screens/product_detail_screen.dart
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Stack(
         children: [
-          // Cuerpo escaneable con scroll
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
@@ -51,18 +49,16 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       _buildDescription(),
                       const SizedBox(height: 28),
                       _buildReviewsSection(),
-                      const SizedBox(height: 100), // Espacio extra para evitar superposiciones
+                      const SizedBox(height: 100),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          // Botones flotantes superiores
           _buildFloatingAppBar(),
         ],
       ),
-      // Botón de compra persistente
       bottomNavigationBar: BottomAppBar(
         color: AppColors.backgroundColor,
         elevation: 10,
@@ -148,7 +144,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
       decoration: BoxDecoration(
         color: AppColors.secondaryColor.withOpacity(0.05),
       ),
-      // Animación Hero emparejada matemáticamente con la tarjeta del listado principal
+   
       child: Hero(
         tag: 'product-image-${widget.product.id}',
         child: widget.product.imageUrl != null && widget.product.imageUrl!.isNotEmpty
@@ -157,14 +153,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
-                
-                // ✅ BUENA PRÁCTICA DE CONFIGURACIÓN RAM:
-                // Al definir tamaños estáticos de decodificación compatibles con la tarjeta,
-                // la GPU comparte la caché de texturas y elimina el parpadeo en la transición.
                 memCacheWidth: 480,  
                 memCacheHeight: 640, 
-                
-                // Modificado: Contenedor gris plano para amortiguar el Hero suavemente
                 placeholder: (context, url) => Container(
                   color: Colors.grey[200],
                 ),

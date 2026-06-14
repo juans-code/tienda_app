@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:tienda_app/features/products/domain/models/product_model.dart';
 import 'package:tienda_app/styles/text_styles.dart';
 
-/// [ProductCard] optimizado como StatelessWidget.
-/// Al usar imágenes ligeras desde el servidor, ya no requiere conservar el estado
-/// en caché de manera forzada, permitiendo un scroll nativo a máximos FPS.
 class ProductCard extends StatelessWidget {
   final ProductModel product;
   final VoidCallback onTap;
@@ -44,7 +41,6 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             
-            // Información del producto
             Expanded(
               flex: 2,
               child: Padding(
@@ -53,7 +49,7 @@ class ProductCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Nombre del producto
+
                     Text(
                       product.name,
                       style: AppTextStyles.productNameMedium,
@@ -62,7 +58,6 @@ class ProductCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     
-                    // Precio y botón de agregar
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -101,13 +96,8 @@ class ProductCard extends StatelessWidget {
         fit: BoxFit.cover,
         width: double.infinity,
         height: double.infinity,
-        
-        // ✅ MANTENER: Limita la decodificación de píxeles en memoria RAM.
-        // Valores ideales para tarjetas dispuestas en grillas de 2 columnas.
         memCacheWidth: 280,  
         memCacheHeight: 380, 
-        
-        // Placeholder plano y ligero para no entorpecer la fluidez de la GPU
         placeholder: (context, url) => Container(
           color: Colors.grey[200],
         ),
@@ -133,7 +123,6 @@ class ProductCard extends StatelessWidget {
       );
     }
     
-    // Contenedor alternativo en caso de que la propiedad imageUrl sea nula o vacía
     return Container(
       color: Colors.grey[200],
       width: double.infinity,
